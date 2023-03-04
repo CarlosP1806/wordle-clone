@@ -50,7 +50,7 @@
 
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(7, 5rem);
+  grid-template-columns: repeat(8, 5rem);
   justify-content: center;
   gap: 1rem;
 }
@@ -116,11 +116,16 @@
 @media screen and (max-width: 768px) {
 
   .board {
-    margin: 3rem auto;
+    margin: 2rem auto;
   }
 
   .keyboard {
     grid-template-columns: repeat(6, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  .guess_row {
+    margin: .5rem 0;
   }
 
   .tile {
