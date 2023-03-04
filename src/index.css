@@ -114,8 +114,27 @@
 }
 
 @media screen and (max-width: 768px) {
+
+  .board {
+    margin: 3rem auto;
+  }
+
   .keyboard {
-    grid-template-columns: repeat(5, 5rem);
+    grid-template-columns: repeat(6, 4rem);
+  }
+
+  .tile {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .key {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .key--large {
+    width: 8rem;
   }
 
   .modal {

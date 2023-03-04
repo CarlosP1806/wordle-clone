@@ -43,6 +43,13 @@ export default function Board({
         winnerWord={winnerWord}
         submitted={currentRow > 4}
       />
+      
+      <GuessRow 
+        rowNumber={5} 
+        board={board} 
+        winnerWord={winnerWord}
+        submitted={currentRow > 5}
+      />
     </div>
   );
 }
