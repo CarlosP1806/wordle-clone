@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (currentRow > 4) {
+    if (currentRow > 5) {
       setIsGameRunning(false);
     }
   }, [currentRow]);

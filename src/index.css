@@ -144,5 +144,15 @@
 
   .modal {
     width: 90%;
+    min-height: 15rem;
+  }
+
+  .modal__message {
+    font-size: 2rem;
+  }
+
+  .modal__button {
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
   }
 }
