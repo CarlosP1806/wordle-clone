@@ -1,13 +1,124 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-top: 5rem;
+}
+
+.board {
+  margin: 6rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess_row {
+  display: flex;
+  margin: 1rem 0;
+  gap: .5rem;
+}
+
+.tile {
+  border: 1px solid rgb(49, 49, 49);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.tile--correct {
+  background-color: rgb(15, 187, 15);
+}
+
+.tile--incorrect {
+  background-color: rgb(184, 184, 184);
+}
+
+.tile--partial {
+  background-color: rgb(255, 217, 0);
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(7, 5rem);
+  justify-content: center;
+  gap: 1rem;
+}
+
+.key {
+  border-radius: 4px;
+  width: 5rem;
+  height: 5rem;
+  font-size: 2rem;
+  border: 1px solid rgb(39, 39, 39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.key--large {
+  width: 10rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-height: 30rem;
+  width: 50%;
+  background-color: white;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  border-radius: 5px;
+}
+
+.modal__message {
+  font-size: 4rem;
+}
+
+.modal__button {
+  background-color: green;
+  cursor: pointer;
+  border: none;
+  padding: 1.5rem 5rem;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.6rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(60, 60, 60, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .keyboard {
+    grid-template-columns: repeat(5, 5rem);
+  }
+
+  .modal {
+    width: 90%;
+  }
 }
