@@ -147,6 +147,10 @@
 
 @media screen and (max-width: 768px) {
 
+  .title {
+    margin-top: 3rem;
+  }
+
   .board {
     margin: 2rem auto;
   }
@@ -163,7 +167,7 @@
 
   .tile {
     width: 4.5rem;
-    height: 4.5rem;
+    height: 4.2rem;
   }
 
   .key {
