@@ -67,6 +67,18 @@
   cursor: pointer;
 }
 
+.key--correct {
+  background-color: rgb(15, 187, 15);
+}
+
+.key--incorrect {
+  background-color: rgb(184, 184, 184);
+}
+
+.key--partial {
+  background-color: rgb(255, 217, 0); 
+}
+
 .key--large {
   width: 10rem;
 }

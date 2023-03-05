@@ -103,6 +103,9 @@ function App() {
         onLetterPress={onLetterPress}
         onDeletePress={onDeletePress}
         onSubmitGuess={onSubmitGuess}
+        board={board}
+        winnerWord={winnerWord}
+        currentRow={currentRow}
       />
 
       { !isGameRunning && (

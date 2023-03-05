@@ -1,44 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Keyboard({
   onLetterPress,
   onDeletePress,
-  onSubmitGuess
+  onSubmitGuess,
+  board,
+  winnerWord,
+  currentRow
 }) {
-
+  
   function handleKeyClick(event) {
     onLetterPress(event.target.textContent);
   }
 
+  function determineKeyStyle(key) {
+    let keyStyle = 'key--inactive';
+    let keyCorrect = false;
+
+    board.slice(0, currentRow).forEach((row, rowIndex) => {
+      const guessedWord = row.join("").toLowerCase();
+
+      for (let i = 0; i < guessedWord.length; i++) {
+        if (guessedWord[i] === key.toLowerCase()) {
+          if (guessedWord[i] === winnerWord[i] || keyCorrect) {
+            keyStyle = 'key--correct';
+            keyCorrect = true;
+          } else if (winnerWord.includes(guessedWord[i]) && !keyCorrect) {
+            keyStyle = 'key--partial';
+          } else {
+            keyStyle = 'key--incorrect';
+          }
+        }
+      }
+    }); 
+
+    return keyStyle;
+  }
+
   return (
     <div className="keyboard">
-      <div className="key" onClick={handleKeyClick}>A</div>
-      <div className="key" onClick={handleKeyClick}>B</div>
-      <div className="key" onClick={handleKeyClick}>C</div>
-      <div className="key" onClick={handleKeyClick}>D</div>
-      <div className="key" onClick={handleKeyClick}>E</div>
-      <div className="key" onClick={handleKeyClick}>F</div>
-      <div className="key" onClick={handleKeyClick}>G</div>
-      <div className="key" onClick={handleKeyClick}>H</div>
-      <div className="key" onClick={handleKeyClick}>I</div>
-      <div className="key" onClick={handleKeyClick}>J</div>
-      <div className="key" onClick={handleKeyClick}>K</div>
-      <div className="key" onClick={handleKeyClick}>L</div>
-      <div className="key" onClick={handleKeyClick}>M</div>
-      <div className="key" onClick={handleKeyClick}>N</div>
-      <div className="key" onClick={handleKeyClick}>Ñ</div>
-      <div className="key" onClick={handleKeyClick}>O</div>
-      <div className="key" onClick={handleKeyClick}>P</div>
-      <div className="key" onClick={handleKeyClick}>Q</div>
-      <div className="key" onClick={handleKeyClick}>R</div>
-      <div className="key" onClick={handleKeyClick}>S</div>
-      <div className="key" onClick={handleKeyClick}>T</div>
-      <div className="key" onClick={handleKeyClick}>U</div>
-      <div className="key" onClick={handleKeyClick}>V</div>
-      <div className="key" onClick={handleKeyClick}>W</div>
-      <div className="key" onClick={handleKeyClick}>X</div>
-      <div className="key" onClick={handleKeyClick}>Y</div>
-      <div className="key" onClick={handleKeyClick}>Z</div>
+      { 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('').map(letter => (
+        <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
+      ))}
 
       <div className="key" onClick={onDeletePress}>Del</div>
       <div className="key key--large" onClick={onSubmitGuess}>Enter</div>
