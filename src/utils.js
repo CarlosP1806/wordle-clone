@@ -5091,5 +5091,3 @@ export const wordList = [
 export const getRandomWord = (wordList) => {
   return wordList[Math.floor(Math.random()*wordList.length)];
 }
-
-export const WORD_SIZE = 5;
