@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Board from "./components/Board";
 import GameOverModal from "./components/GameOverModal";
 import Keyboard from "./components/Keyboard";
+import Message from "./components/Message";
 
 import { WORD_SIZE, wordList, getRandomWord } from './utils';
 
@@ -9,6 +10,9 @@ function App() {
 
   const [isGameRunning, setIsGameRunning] = useState(true);
   const [winnerWord, setWinnerWord] = useState('');
+
+  const [showModalMessage, setShowModalMessage] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const [currentRow, setCurrentRow] = useState(0);
   const [board, setBoard] = useState([
@@ -69,12 +73,22 @@ function App() {
   function onSubmitGuess() {
     const guess = board[currentRow].join("").toLowerCase();
     if (guess.length < WORD_SIZE) {
-      alert('not enough letters!'); // TODO: Make modal
+      setModalMessage('Letras insuficientes');
+      setShowModalMessage(true);
+
+      setTimeout(() => {
+        setShowModalMessage(false);
+      }, 3000)
       return;
     }
 
     if (!wordList.includes(guess)) {
-      alert('word not in dictionary!'); // TODO: Make modal
+      setModalMessage('Palabra invalida');
+      setShowModalMessage(true);
+      
+      setTimeout(() => {
+        setShowModalMessage(false);
+      }, 3000)
       return; 
     }
 
@@ -107,6 +121,8 @@ function App() {
         winnerWord={winnerWord}
         currentRow={currentRow}
       />
+
+      <Message message={modalMessage} visible={showModalMessage}/>
 
       { !isGameRunning && (
         <>

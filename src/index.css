@@ -151,10 +151,27 @@
   background-color: rgba(60, 60, 60, 0.1);
 }
 
+.message {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -4rem;
+  background-color: rgb(75, 75, 75);
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: white;
+  transition: top .2s ease-in-out;
+}
+
+.message.active {
+  top: 1rem;
+}
+
 @media screen and (max-width: 768px) {
 
   .title {
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
 
   .board {
@@ -163,6 +180,13 @@
 
   .guess_row {
     margin: .5rem 0;
+  }
+
+  .keyboard {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .keyboard__row {
@@ -176,7 +200,7 @@
 
   .key {
     width: 3.4rem;
-    height: 4rem;
+    height: 5rem;
     font-size: 1.8rem;
   }
 
