@@ -39,12 +39,26 @@ export default function Keyboard({
 
   return (
     <div className="keyboard">
-      { 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('').map(letter => (
-        <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
-      ))}
+      <div className="keyboard__row">
+        { 'QWERTYUIOP'.split('').map(letter => (
+          <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
+        ))}
+      </div>
 
-      <div className="key" onClick={onDeletePress}>Del</div>
-      <div className="key key--large" onClick={onSubmitGuess}>Enter</div>
+      <div className="keyboard__row">
+        { 'ASDFGHJKL'.split('').map(letter => (
+          <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
+        ))}
+      </div>
+
+      <div className="keyboard__row">
+        { 'ZXCVBNM'.split('').map(letter => (
+          <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
+        ))}
+        <div className="key" onClick={onDeletePress}>Del</div>
+        <div className="key key--large" onClick={onSubmitGuess}>Enter</div>
+      </div>
+
     </div>
   );
 }
