@@ -24,9 +24,6 @@ function App() {
     ['','','','',''],
   ]);
 
-
-  console.log(winnerWord);
-
   useEffect(() => {
     setWinnerWord(getRandomWord(wordList));
   }, []);
