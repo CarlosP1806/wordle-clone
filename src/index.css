@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;900&display=swap');
+
+:root {
+  --color-green: rgb(18, 164, 18); 
+  --color-yellow: rgb(255, 217, 0); 
+  --color-gray: rgb(143, 143, 143); 
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-size: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .title {
   text-align: center;
   font-size: 2.4rem;
   margin-top: 5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .board {
@@ -26,7 +37,7 @@
 }
 
 .tile {
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid rgba(0, 0, 0, 0.4);
   width: 5rem;
   height: 5rem;
   border-radius: 4px;
@@ -37,15 +48,21 @@
 }
 
 .tile--correct {
-  background-color: rgb(15, 187, 15);
+  background-color: var(--color-green);
+  color: whitesmoke;
+  border: none;
 }
 
 .tile--incorrect {
-  background-color: rgb(184, 184, 184);
+  background-color: var(--color-gray);
+  color: whitesmoke;
+  border: none;
 }
 
 .tile--partial {
-  background-color: rgb(255, 217, 0);
+  background-color: var(--color-yellow);
+  color: whitesmoke;
+  border: none;
 }
 
 .keyboard {
@@ -60,7 +77,7 @@
   width: 5rem;
   height: 5rem;
   font-size: 2rem;
-  border: 1px solid rgb(39, 39, 39);
+  background-color: rgb(229, 229, 239);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,15 +85,18 @@
 }
 
 .key--correct {
-  background-color: rgb(15, 187, 15);
+  background-color: var(--color-green);
+  color: whitesmoke;
 }
 
 .key--incorrect {
-  background-color: rgb(184, 184, 184);
+  background-color: var(--color-gray);
+  color: whitesmoke;
 }
 
 .key--partial {
-  background-color: rgb(255, 217, 0); 
+  background-color: var(--color-yellow); 
+  color: whitesmoke;
 }
 
 .key--large {
@@ -132,8 +152,9 @@
   }
 
   .keyboard {
-    grid-template-columns: repeat(6, 4rem);
+    grid-template-columns: repeat(7, 4rem);
     margin-bottom: 1rem;
+    gap: .5rem;
   }
 
   .guess_row {
@@ -146,8 +167,9 @@
   }
 
   .key {
-    width: 4rem;
+    width: 3.6rem;
     height: 4rem;
+    font-size: 1.8rem;
   }
 
   .key--large {
