@@ -1,40 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useBoard } from '../context/BoardContext';
 
 export default function Keyboard({
   onLetterPress,
   onDeletePress,
   onSubmitGuess,
-  board,
-  winnerWord,
-  currentRow
 }) {
+
+  const { evaluateLetter } = useBoard();
   
   function handleKeyClick(event) {
     onLetterPress(event.target.textContent);
   }
 
   function determineKeyStyle(key) {
-    let keyStyle = 'key--inactive';
-    let keyCorrect = false;
-
-    board.slice(0, currentRow).forEach((row, rowIndex) => {
-      const guessedWord = row.join("").toLowerCase();
-
-      for (let i = 0; i < guessedWord.length; i++) {
-        if (guessedWord[i] === key.toLowerCase()) {
-          if (guessedWord[i] === winnerWord[i] || keyCorrect) {
-            keyStyle = 'key--correct';
-            keyCorrect = true;
-          } else if (winnerWord.includes(guessedWord[i]) && !keyCorrect) {
-            keyStyle = 'key--partial';
-          } else {
-            keyStyle = 'key--incorrect';
-          }
-        }
-      }
-    }); 
-
-    return keyStyle;
+    let keyStyle = evaluateLetter(key);
+    return `key--${keyStyle}`;
   }
 
   return (
@@ -46,7 +27,7 @@ export default function Keyboard({
       </div>
 
       <div className="keyboard__row">
-        { 'ASDFGHJKL'.split('').map(letter => (
+        { 'ASDFGHJKLÑ'.split('').map(letter => (
           <div key={letter} className={`key ${determineKeyStyle(letter)}`} onClick={handleKeyClick}>{letter}</div>
         ))}
       </div>

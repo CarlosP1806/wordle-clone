@@ -3,36 +3,31 @@ import Board from "./components/Board";
 import GameOverModal from "./components/GameOverModal";
 import Keyboard from "./components/Keyboard";
 import Message from "./components/Message";
+import { useBoard, WORD_SIZE } from "./context/BoardContext";
 
-import { WORD_SIZE, wordList, getRandomWord } from './utils';
+import { wordList } from './utils';
 
 function App() {
 
-  const [isGameRunning, setIsGameRunning] = useState(true);
-  const [winnerWord, setWinnerWord] = useState('');
+  const { 
+    board, 
+    setBoard,
+    currentRow,
+    setCurrentRow,
+    winnerWord, 
+  } = useBoard();
 
+  const [isGameRunning, setIsGameRunning] = useState(true);
   const [showModalMessage, setShowModalMessage] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-
-  const [currentRow, setCurrentRow] = useState(0);
-  const [board, setBoard] = useState([
-    ['','','','',''],
-    ['','','','',''],
-    ['','','','',''],
-    ['','','','',''],
-    ['','','','',''],
-    ['','','','',''],
-  ]);
-
-  useEffect(() => {
-    setWinnerWord(getRandomWord(wordList));
-  }, []);
 
   useEffect(() => {
     if (currentRow > 5) {
       setIsGameRunning(false);
     }
   }, [currentRow]);
+
+  console.log(winnerWord);
 
   function onLetterPress(letter) {
     setBoard(prevBoard => {
@@ -105,18 +100,11 @@ function App() {
   return (
     <>
       <h1 className="title">Wordle Clone</h1>
-      <Board 
-        currentRow={currentRow}
-        board={board}
-        winnerWord={winnerWord}
-      />
+      <Board />
       <Keyboard 
         onLetterPress={onLetterPress}
         onDeletePress={onDeletePress}
         onSubmitGuess={onSubmitGuess}
-        board={board}
-        winnerWord={winnerWord}
-        currentRow={currentRow}
       />
 
       <Message message={modalMessage} visible={showModalMessage}/>
