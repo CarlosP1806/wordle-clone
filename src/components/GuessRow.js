@@ -25,7 +25,7 @@ export default function GuessRow({
       }  
 
       let numberCorrectPositionings = 0;
-      for (let i = 0; i < guessedWord.length; i++) {
+      for (let i = position+1; i < guessedWord.length; i++) {
         if (guessedLetter === guessedWord[i] && guessedLetter === winnerWord[i])
           numberCorrectPositionings++;
       }
